@@ -1,0 +1,113 @@
+[
+    {
+      "pk": 1,
+      "model": "store.store",
+      "fields": {
+        "sku": "pp5001340155",
+        "name": "Womens Sports Bra",
+        "description": "Cotton just-right original fit bra is comfortable and looks great too. Cotton washable, extended sizes available online only",
+        "price": 14.99,
+        "category": 1,
+        "rating": 4.6,
+        "image_url": "",
+        "image": ""
+      }
+    },
+    {
+      "pk": 2,
+      "model": "store.store",
+      "fields": {
+        "sku": "pp5001600425",
+        "name": "Womens gym Shorts",
+        "description": "Straight-leg styling and on-the-job comfort make our Womens Gym Shorts a flattering decision",
+        "category": 1,
+        "rating": 4.0,
+        "image_url": "",
+        "image": ""
+      }
+    },
+    {
+      "pk": 3,
+      "model": "store.store",
+      "fields": {
+        "sku": "pp5001730010",
+        "name": "Ultimate Womens Gym Top",
+        "description": "Add a 5-star rated material with excellent design and you've met the Fittness4Ever ultimate gym top.",
+        "price": 205.99,
+        "category": 1,
+        "rating": 4.7,
+        "image_url": "",
+        "image": ""
+      }
+    },
+    {
+      "pk": 4,
+      "model": "store.store",
+      "fields": {
+        "sku": "pp5001890157",
+        "name": "Lean Build Whey Protien",
+        "description": "This high impact 100% natural whey protien is designed to aid a balanced diet and build lean muscle.",
+        "price": 29.99,
+        "category": 4,
+        "rating": 3,
+        "image_url": "",
+        "image": ""
+      }
+    },
+    {
+      "pk": 5,
+      "model": "store.store",
+      "fields": {
+        "sku": "pp5002111605",
+        "name": "Weight Cut Formula",
+        "description": "This formula aids weightloss by giving your msucles the protien they need without causing water retention or carb building",
+        "price": 22.99,
+        "category": 5,
+        "rating": 5,
+        "image_url": "",
+        "image": ""
+      }
+    },
+    {
+      "pk": 6,
+      "model": "store.store",
+      "fields": {
+        "sku": "pp5002260206",
+        "name": "Muscle Bulk Formula",
+        "description": "This formula increases muscle building capability by providing a boost in protien intake and needed calories",
+        "price": 74.99,
+        "category": 6,
+        "rating": 4.7,
+        "image_url": "",
+        "image": ""
+      }
+    },
+    {
+      "pk": 7,
+      "model": "store.store",
+      "fields": {
+        "sku": "pp5002440521",
+        "name": "Mens Supreme Shorts",
+        "description": "Extra comfort extra performance these shorts let you work out to the fullest ",
+        "price": 59,
+        "category": 2,
+        "rating": 4.4,
+        "image_url": "",
+        "image": ""
+      }
+    },
+    {
+      "pk": 8,
+      "model": "store.store",
+      "fields": {
+        "sku": "pp5002601115",
+        "name": "Ultimate exercise shoes",
+        "description": "Ultimate exercise shoes are THE shoe to wear at the gym or at home. With lightweight materials and a comforting fit they beat all competition",
+        "price": 40.00,
+        "category": 7,
+        "rating": 4.5,
+        "image_url": "",
+        "image": ""
+      }
+    }
+  ]
