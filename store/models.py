@@ -1,18 +1,35 @@
+"""
+Models Data for View
+"""
+
 from django.db import models
 
 
 class Category(models.Model):
+    """
+    Models category section of fixtures
+    """
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     def get_friendly_name(self):
+        """
+        Return user friendly name as string
+        """
         return self.friendly_name
 
 
 class Store(models.Model):
+    """
+    Modles store fixture data for view
+    """
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
@@ -23,4 +40,4 @@ class Store(models.Model):
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
