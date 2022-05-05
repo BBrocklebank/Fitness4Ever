@@ -10,7 +10,7 @@
         "category": 1,
         "rating": 4.6,
         "image_url": "https://cdn.pixabay.com/photo/2016/10/01/18/03/sports-1708051_1280.jpg",
-        "image": ""
+        "image": "womens_bra.jpg"
       }
     },
     {
@@ -20,6 +20,7 @@
         "sku": "pp5001600425",
         "name": "Womens gym Shorts",
         "description": "Straight-leg styling and on-the-job comfort make our Womens Gym Shorts a flattering decision",
+        "price": 49.99,
         "category": 1,
         "rating": 4.0,
         "image_url": "https://cdn.pixabay.com/photo/2017/06/15/11/43/model-2405173_1280.jpg",
