@@ -9,7 +9,7 @@ class StoreAdmin(admin.ModelAdmin):
         'category',
         'price',
         'rating',
-        'image'
+        'image',
     )
 
     ordering = ('sku',)
@@ -17,7 +17,7 @@ class StoreAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
-        'name'
+        'name',
     )
 
 admin.site.register(Store, StoreAdmin)
