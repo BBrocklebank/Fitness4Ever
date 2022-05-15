@@ -5,9 +5,10 @@
                 Fitness Plans
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">Weight Loss</a>
-                <a href="" class="dropdown-item">Muscle Building</a>
-                <a href="" class="dropdown-item">Cardio</a>
+                <a href="{% url 'store' %}?category=weight-loss,fitness-plan" class="dropdown-item">Weight Loss</a>
+                <a href="{% url 'store' %}?category=muscle-build,fitness-plan" class="dropdown-item">Muscle Building</a>
+                <a href="{% url 'store' %}?category=cardio,fitness-plan" class="dropdown-item">Cardio</a>
+                <a href="{% url 'store' %}?category=fitness-plan" class="dropdown-item">All Fitness Plans</a>
             </div>
         </li>
 
@@ -19,12 +20,13 @@
                 <a href="" class="dropdown-item">Body Trim</a>
                 <a href="" class="dropdown-item">Body Build</a>
                 <a href="" class="dropdown-item">Body Maintain</a>
+                <a href="" class="dropdown-item">All Nutrition Plans</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-2" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                All Store Products
+                All Products
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
                 <a href="" class="dropdown-item">By Price</a>
@@ -36,25 +38,25 @@
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-2" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Clothing
+                Gymwear
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="" class="dropdown-item">Women</a>
-                <a href="" class="dropdown-item">Men</a>
-                <a href="" class="dropdown-item">Shoes</a>
-                <a href="{% url 'store' %}" class="dropdown-item">All Gymwear</a>
+                <a href="{% url 'store' %}?category=women,gymwear" class="dropdown-item">Women</a>
+                <a href="{% url 'store' %}?category=men,gymwear" class="dropdown-item">Men</a>
+                <a href="{% url 'store' %}?category=shoes,gymwear" class="dropdown-item">Shoes</a>
+                <a href="{% url 'store' %}?category=women,men,shoes,gymwear" class="dropdown-item">All Gymwear</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-2" href="#" id="homeware-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Nutrition
+                Protien
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
                 <a href="" class="dropdown-item">Lean Build</a>
                 <a href="" class="dropdown-item">Fat Loss</a>
                 <a href="" class="dropdown-item">Muscle Gain</a>
-                <a href="" class="dropdown-item">All Nutrition</a>
+                <a href="" class="dropdown-item">All Protien</a>
             </div>
         </li>
 

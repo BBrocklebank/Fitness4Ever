@@ -105,7 +105,7 @@
         "name": "Ultimate exercise shoes",
         "description": "Ultimate exercise shoes are THE shoe to wear at the gym or at home. With lightweight materials and a comforting fit they beat all competition",
         "price": 40.00,
-        "category": 7,
+        "category": 3,
         "rating": 4.5,
         "image_url": "https://cdn.pixabay.com/photo/2017/07/02/19/24/dumbbells-2465478_1280.jpg",
         "image": "exercise_shoes.jpg"
