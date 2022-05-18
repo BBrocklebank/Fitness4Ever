@@ -53,10 +53,10 @@
                 Protien
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
-                <a href="" class="dropdown-item">Lean Build</a>
-                <a href="" class="dropdown-item">Fat Loss</a>
-                <a href="" class="dropdown-item">Muscle Gain</a>
-                <a href="" class="dropdown-item">All Protien</a>
+                <a href="{% url 'store' %}?category=lean_build,protein" class="dropdown-item">Lean Build</a>
+                <a href="{% url 'store' %}?category=fat_loss,protein" class="dropdown-item">Fat Loss</a>
+                <a href="{% url 'store' %}?category=muscle_gain,protein" class="dropdown-item">Muscle Gain</a>
+                <a href="{% url 'store' %}?category=lean_build,fat_loss,muscle_gain,protein" class="dropdown-item">All Protien</a>
             </div>
         </li>
 
