@@ -120,8 +120,9 @@
 {% endblock %}
 
 {% block postloadjs %}
-<!-- Appends to code already present within postloadjs -->
+
 {{ block.super }}
+<!-- Appends to code already present within postloadjs -->
     <script>
         $('.btt-link').click(function(e) {
             window.scrollTo(0,0)
