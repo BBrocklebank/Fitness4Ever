@@ -107,6 +107,13 @@ body {
     color: rgb(37, 232, 37);
 }
 
+.login-form, .signup-form{
+    margin-top: 50px;
+    margin-left: auto;
+    width: 20%;
+    margin-right: auto;
+}
+
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
