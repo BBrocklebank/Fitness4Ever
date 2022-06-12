@@ -99,6 +99,10 @@ body {
     cursor: pointer;
 }
 
+.fa-shopping-bag{
+    color:rgb(255, 53, 53)
+}
+
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
