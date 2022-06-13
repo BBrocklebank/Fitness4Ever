@@ -114,6 +114,14 @@ body {
     z-index: 99999999999;
 }
 
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
 .login-form, .signup-form{
     margin-top: 50px;
     margin-left: auto;
