@@ -107,6 +107,13 @@ body {
     color: rgb(37, 232, 37);
 }
 
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
 .login-form, .signup-form{
     margin-top: 50px;
     margin-left: auto;
