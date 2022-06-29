@@ -125,7 +125,7 @@ body {
 .login-form, .signup-form{
     margin-top: 50px;
     margin-left: auto;
-    width: 20%;
+    width: 15%;
     margin-right: auto;
 }
 
@@ -195,6 +195,27 @@ body {
     overflow-y: auto;
 }
 /* -------------------------------- Media Queries */
+
+/* Correct login form layout on mobile */
+@media (max-width: 800px) {
+    .login-form, .signup-form{
+        width: 30%;
+    }
+}
+
+@media (max-width: 428px) {
+    .login-form, .signup-form{
+        width: 40%;
+        margin-top: 120px;
+    }
+}
+
+@media (max-width: 280px) {
+    .login-form, .signup-form{
+        width: 60%;
+        margin-top: 160px;
+    }
+}
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
