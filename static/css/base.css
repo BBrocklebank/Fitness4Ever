@@ -122,11 +122,25 @@ body {
     height: 2px;
 }
 
-.login-form, .signup-form{
-    margin-top: 50px;
+/* All auth customisation */
+
+.center-element{
     margin-left: auto;
-    width: 15%;
     margin-right: auto;
+}
+
+.center-text{
+    text-align: center;
+}
+
+.margin-top-large{
+    margin-top: 50px;
+    width: fit-content;
+}
+
+.margin-top-small{
+    margin-top: 150px;
+    width: fit-content;
 }
 
 /* fixed top navbar only on medium and up */
@@ -194,28 +208,12 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+.btn-outline-black:hover {
+background-color: rgb(247, 31, 31);
+}
 /* -------------------------------- Media Queries */
 
-/* Correct login form layout on mobile */
-@media (max-width: 800px) {
-    .login-form, .signup-form{
-        width: 30%;
-    }
-}
-
-@media (max-width: 428px) {
-    .login-form, .signup-form{
-        width: 40%;
-        margin-top: 120px;
-    }
-}
-
-@media (max-width: 280px) {
-    .login-form, .signup-form{
-        width: 60%;
-        margin-top: 160px;
-    }
-}
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
