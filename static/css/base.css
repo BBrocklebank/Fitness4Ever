@@ -78,6 +78,11 @@ body {
     transition: 300ms;
 }
 
+/* Search bar placeholder */
+input[name='q']::placeholder {
+    color: #656262;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -209,9 +214,19 @@ body {
     overflow-y: auto;
 }
 
+/* Allauth customisations */
 .btn-outline-black:hover {
 background-color: rgb(247, 31, 31);
 }
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #656262;
+}
+
 /* -------------------------------- Media Queries */
 
 
