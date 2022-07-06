@@ -182,6 +182,7 @@ STANDARD_DELIVERY_PERCENTAGE = 7.5
 STRIPE_CURRENCY = 'usd'
 STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
+DEFAULT_FROM_EMAIL = 'fitness4ever@example.com'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
