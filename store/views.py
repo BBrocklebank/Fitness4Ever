@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Store, Category
 from .forms import ProductForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -71,8 +72,14 @@ def item_detail(request, product_id):
 
     return render(request, 'store/item_detail.html', context)
 
+@login_required
 def add_product(request):
     """ Add a product to the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to access this area.')
+        return redirect(reverse('home'))
+
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -91,8 +98,12 @@ def add_product(request):
 
     return render(request, template, context)
 
+@login_required
 def edit_product(request, product_id):
-    """ Edit a product in the store """
+    """ Edit item in the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to access this area.')
+        return redirect(reverse('home'))
     product = get_object_or_404(Store, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -114,8 +125,12 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
+@login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to access this area.')
+        return redirect(reverse('home'))
     product = get_object_or_404(Store, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')
