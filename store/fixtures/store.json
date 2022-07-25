@@ -89,7 +89,7 @@
       "fields": {
         "sku": "pp5002440521",
         "name": "Mens Supreme Shorts",
-        "description": "Extra comfort extra performance these shorts let you work out to the fullest ",
+        "description": "Extra comfort extra performance these shorts let you work out to the fullest",
         "price": 59,
         "category": 2,
         "rating": 4.4,
@@ -109,6 +109,48 @@
         "rating": 4.5,
         "image_url": "https://cdn.pixabay.com/photo/2017/07/02/19/24/dumbbells-2465478_1280.jpg",
         "image": "exercise_shoes.jpg"
+      }
+    },
+    {
+      "pk": 9,
+      "model": "store.store",
+      "fields": {
+        "sku": "pp50026034567",
+        "name": "Body Trim",
+        "description": "Nutrition and instruction plan to trim body fat and strengthen muscle",
+        "price": 100.00,
+        "category": 10,
+        "rating": 4.5,
+        "image_url": "https://cdn.pixabay.com/photo/2017/07/02/19/24/dumbbells-2465478_1280.jpg",
+        "image": "weight_pro.jpg"
+      }
+    },
+    {
+      "pk": 10,
+      "model": "store.store",
+      "fields": {
+        "sku": "pp50026033869",
+        "name": "Body Build",
+        "description": "Nutrition and instruction plan to build muscle bulk and weight",
+        "price": 100.00,
+        "category": 11,
+        "rating": 4.5,
+        "image_url": "https://cdn.pixabay.com/photo/2017/07/02/19/24/dumbbells-2465478_1280.jpg",
+        "image": "bulk_pro.jpg"
+      }
+    },
+    {
+      "pk": 11,
+      "model": "store.store",
+      "fields": {
+        "sku": "pp50026038765",
+        "name": "Body Maintain",
+        "description": "Nutrition and instruction plan to maintain weight and increase muscle density",
+        "price": 100.00,
+        "category": 12,
+        "rating": 4.5,
+        "image_url": "https://cdn.pixabay.com/photo/2017/07/02/19/24/dumbbells-2465478_1280.jpg",
+        "image": "lean_pro.jpg"
       }
     }
   ]

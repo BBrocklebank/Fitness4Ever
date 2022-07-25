@@ -1,26 +1,21 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-2" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Fitness Plans
+
+        <li>
+            <a class="logo-font font-weight-bold nav-link text-black mr-2" href="{% url 'home' %}?category=body_trim,body_build,body_maintain,nutrition" alt="home page link">
+                Home
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="{% url 'store' %}?category=weight-loss,fitness-plan" class="dropdown-item">Weight Loss</a>
-                <a href="{% url 'store' %}?category=muscle-build,fitness-plan" class="dropdown-item">Muscle Building</a>
-                <a href="{% url 'store' %}?category=cardio,fitness-plan" class="dropdown-item">Cardio</a>
-                <a href="{% url 'store' %}?category=fitness-plan" class="dropdown-item">All Fitness Plans</a>
-            </div>
         </li>
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-2" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Nutrition Plans
+                Nutrition
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">Body Trim</a>
-                <a href="" class="dropdown-item">Body Build</a>
-                <a href="" class="dropdown-item">Body Maintain</a>
-                <a href="" class="dropdown-item">All Nutrition Plans</a>
+                <a href="{% url 'store' %}?category=body_trim,nutrition" class="dropdown-item">Body Trim</a>
+                <a href="{% url 'store' %}?category=body_build,nutrition" class="dropdown-item">Body Build</a>
+                <a href="{% url 'store' %}?category=body_maintain,nutrition" class="dropdown-item">Body Maintain</a>
+                <a href="{% url 'store' %}?category=body_trim,body_build,body_maintain,nutrition" class="dropdown-item">All Nutrition Plans</a>
             </div>
         </li>
 
@@ -60,16 +55,6 @@
             </div>
         </li>
 
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-2" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Special Offers
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">New Arrivals</a>
-                <a href="" class="dropdown-item">Deals</a>
-                <a href="" class="dropdown-item">Clearance</a>
-                <a href="" class="dropdown-item">All Specials</a>
-            </div>
         </li>
     </ul>
 </div>

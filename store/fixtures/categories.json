@@ -6,4 +6,7 @@
 {"pk": 6, "model": "store.category", "fields": {"name": "muscle_gain", "friendly_name": "Muscle Gain"}},
 {"pk": 7, "model": "store.category", "fields": {"name": "new_arrivals", "friendly_name": "New Arrivals"}},
 {"pk": 8, "model": "store.category", "fields": {"name": "deals", "friendly_name": "Deals"}},
-{"pk": 9, "model": "store.category", "fields": {"name": "clearance", "friendly_name": "Clearance"}}]
+{"pk": 9, "model": "store.category", "fields": {"name": "clearance", "friendly_name": "Clearance"}},
+{"pk": 10, "model": "store.category", "fields": {"name": "body_trim", "friendly_name": "Body Trim"}},
+{"pk": 11, "model": "store.category", "fields": {"name": "body_build", "friendly_name": "Body Build"}},
+{"pk": 12, "model": "store.category", "fields": {"name": "body_maintain", "friendly_name": "Body Maintain"}}]
