@@ -18,7 +18,7 @@
       "model": "store.store",
       "fields": {
         "sku": "pp5001600425",
-        "name": "Womens gym Shorts",
+        "name": "Womens Gym Shorts",
         "description": "Straight-leg styling and on-the-job comfort make our Womens Gym Shorts a flattering decision",
         "price": 49.99,
         "category": 1,
