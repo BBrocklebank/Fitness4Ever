@@ -145,7 +145,7 @@
       "fields": {
         "sku": "pp50026038765",
         "name": "Body Maintain",
-        "description": "Nutrition and instruction plan to maintain weight and increase muscle density",
+        "description": "Nutrition and instruction plan to maintain weight and increase muscle density.",
         "price": 100.00,
         "category": 12,
         "rating": 4.5,
