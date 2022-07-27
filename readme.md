@@ -529,6 +529,14 @@ Test No | Test Feature | Expected Result | Actual | Pass/Fail
 20 | Successful product deletion | Product deleted | | PASS
 21 | Successful product creation | Product added | | PASS
 
+### Automated Testing
+
+Using Djangos built in testing functionality, tests were design to assess the most important aspect of the site, the store. These tests ensured that the correct pages were loading, that only the correct fields were necessary when adding products and that a name was always present for products.
+
+Specific test files were created in the store app, within these tests were written mannually and then run from the command line.
+
+Test results:
+![Automated Test Results](media/readme/tests.png)
 
 ### Browsers
  - The site was tested on Google Chrome, Edge, Safari and Mozilla Firefox
