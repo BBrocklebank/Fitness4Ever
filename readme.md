@@ -48,8 +48,8 @@ Targeting those who like to keep their bodies fit and healthy and those seeking 
 - Aid users in reaching their fitness goals
 - High compatibility/responsivness for user ease of access
 - High user engagement
-High product sales
-High annual fittness sales
+- High product sales
+- High annual fittness sales
 <br>
 
 ### User Stories
@@ -87,7 +87,7 @@ High annual fittness sales
 
 * Developer Goals
   <br>
-   - As a developer, I want user to find the UI intuitive and easy to use
+   - As a developer, I want users to find the UI intuitive and easy to use
   <br>
    - As a developer, I want users to find a fluid experience from signup to purchase
   <br>
@@ -104,163 +104,123 @@ High annual fittness sales
 
 ### Design Choices
 
-Beginning this stage by researching other available recipe sites I began to make a list of desirable design aspects I wanted to be included. High priority was placed on simplicity, as not to overwhelm the user with information. The use of pale colour shades stood out as a fine way to draw the user in to select information with brighter text tones, avoiding eye fatigue. The importance of symmetry became apparent during the design stage, allowing for more information on screen without a cluttered feel.
+Beginning this stage by researching other available sports clothing/nutrition sites I began to make a list of desirable design features to be included. Top of the list was a way to process transactions/payments and generate a profit from the site, as this is the main purpose behind it. Second to this was navigation simplicity. The user journey needed to be targets and controlled to push the user towards products. However this couldn’t be at the expense of user experience.
 
-Interactivity needed to be simple and precise, one should be able to understand site navigation and controls intuitively. Large clear buttons have been adopted to aid those using small screens and/or the visually impaired. Basic instructions are applied in the form of suggestion and required fields on forms. All labels are appropriate and where a label hasn’t been used an aria-label has been, adhering to accessibility standards.
+Use of neutral coloured UI elements would be deployed to allow product images to have more impact, providing colour and the most interesting aspect of the page. Colours would be used to aid UI selection and to maintain accessibility.
 
-To fulfil the discovery and search aspect of the site a distinct search bar was devised and implemented to allow users to freely search all of the sites content. There’s clear search and reset buttons available for navigating away from a search without the need to reload the page.
+Interactivity needed to be simple and precise, one should be able to understand site navigation and controls intuitively. The site is required to be fully responsive to all access from a variety of screen sizes/devices, all labels are appropriate and where a label hasn’t been used an aria-label has been, adhering to accessibility standards.
 
-Following the path of simplicity care has been taken to allow the user to edit their own details and update their information. A user can update their first and second names, username and email all from their profile without the need to load another page. This provides a stable and fluid experience.
-<br>
-<br>
+To fulfil the discovery and search aspect of the site a distinct search bar was devised and implemented to allow users to freely search all of the sites products. In addition to this the ability to filter products via various metrics is also included. Category, price, rating etc.
 
-### Frontend Sketches
-
-These sketches were created at the very initial design phase following research. They represent an idealised version of the site UX and general frontend. They include some concepts that did not make it into the final project. This is due to various reasons such as time constraints, feature priority and expereince/time effectivness.
-
-[Homepage Dektop](assets/readme/landing_concept.jpg)
-
-[Homepage Tablet](assets/readme/edit_concept.jpg)
-
-[Homepage Phone](assets/readme/profile_concept.jpg)
-
-[Contact Dektop](assets/readme/recipe_concept.jpg)
-
-<br>
+Users are able to sign up and save their details to a personal profile, this allows the user to quickly checkout with products, auto applying their preferred delivery method. They can update this at their discretion and also update with empty fields to delete this information.
 <br>
 
 
 ### Data Design Choices
-[Data Schema](assets/readme/schema.jpg)
 
-The data schema provided above is an early illustration of the data design undertaken for this fullstack application.
+The first major step in the data design was to choose which kind of datatbase was best suited to this project. Major points for consideration were the amount of potential data queries that could be required over time, relationships between data models and highly important, security. I decided to choose a relational database or 'SQL'. This was based upon the high number of relationships the data would realistically have and the fact that future plans were to scale up site usage, users and therefore data queries and processing. Relational databases handle data quickly and can do so at scale whilst keeping multiple models and sensitive data secure. Drawbacks to this database include complex relationship models to consider when debugging features and also increased maintenance in comparison to non-relational ('no-SQL') databases.
 
-It was created in the early stages of project developement to provide a brief overview of how the Flask framework would interact with the chosen database management system (DBMS). It also begins to take note of some of the data tables and fields the application will require and how this could be normalised. As development planning progressed it became neceassary to develop this further and clearly define the data design.
+The project is built using the Django web framework, this allows the use of a relational database and has several benifits. The ability to work on a local database during development for simplistic testing and feature creation. It enables the use of a production database of my choice that can be locally setup or setup withtin the cloud, effectively outsouring the server side functionality. On top of this Django is framework that enables the creation of apps with high levels of functionality in a short period of time using it's app based developement structure.
 
-The first major step in the data design was to choose which kind of datatbase was best suited to this project. Weighing up the amount of potential data that could build over time, basic relationships between data tables and ease of use. I decided to choose a non-relational database or 'noSQL'. This was based upon the low number of relationships the data would realistically have and the fact that future plans were to scale up site usage, users and therefore data. Non relational databases handle data efficiently and can do so at massive scale. So long as they are stuctured well they do not require high amounts of maintenance.
+The DBMS I choose to host my database in production is PostgreSQL, with Amazon Web Services(AWS) for file hosting. Entirely server based, the systems hosted by Heroku and Amazon respectively don't require a local machine to store/query data. This suited my needs as I lacked the hardware to scale up a database myself. PostgreSQL stores product, user and order data whilst AWS is used to store and deliver all project static files. All database queries/model designs were written in Python3 and use the Django framework.
 
-The DBMS I choose to host my database is MongoDB. An entirely server based system that doesn't require a local machine to store/query data. This suited my needs as I lacked the hardware to scale up a database myself. MongoDb stores data in a JSON format which can be controlled via Python making use of a library called pymongo.
-
-Users will interact with the UX and trigger backened python code that is communicated to MongoDB to create, read, update and delete data on the server. Data integrity will be maintianed via input validation to ensure only clean expected data is input into the system, preventing errors/unexpected behaviour.
+Users will interact with the UX and trigger backened python code that is communicated to heroku/postgreSQL to create, read, update and delete data on the server. Data integrity will be maintianed via input validation to ensure only clean expected data is input into the system, preventing errors/unexpected behaviour.
 
 ### Database Design
 
-Though technically a non-relational database by design, mongoDB makes use of primary, foreign and other keys much like an SQL relational database would. The use of keys in this sense represents relationships between data tables and values. To prevent redundancies, update anomalies and unnecessary duplication the design required normalisation.
+As postgreSQL is a relational database it makes use of models that are setup within django to define the data that the server will host. It uses fields that have their input/data-type specified. The use of foreign keys connects models where data is shared/reused and these relationships can be seen in the provided ERD.
 
-This was done in three stages, breaking down the data that is required into separate entities or tables and displaying the relationships between each.
+Using Djangos app structure and data models, the resulting database is kept tidy with minimal redundancy and repetition. It also by design removes much of the need to normalise data as the separting of functions/features into apps demands each has a data model of to hand said data. As each model is designed to handle that function all data is defined once. Models can be created in one app and imported into another, removing the need to repeat and create redundncy/version control errors.
+
+For this projetc there are five apps each with a model and these are all clearly shown in the ERD provided bellow.
 
 
-##### Un-Normal Form(UNF)
+##### Finalised Database Design
 
-Before normalisation, the data model existed as a flat table containing all fields as one entity. This has no structure and contains redundancies and duplication.
+The final database structure displays the refinded relationships between Djangos modles(data definitions) and the Django apps. This is the data blueprint that is used in productiona as well as development regardless of use in postgreSQL or a local database.
 
-![UNF Data Model](assets/readme/unf_erd.png)
+As seen each model is defined with an id that acts as a primary key/foreign key. The datatbase design defined by the models of Django keeps the relationships clearly defined and onbviousy singular. There is little repition as model can be imported to other apps where necessary. Models exist to populate/take input from users, orders and securty details ie passwords.
 
-##### 1NF
-
-The first stage of normalisation saw the removal of repition in the database. Saving space and giving the model some structure. Allowing quieries to be faster and more efficient.
-
-Recipe (cuisine name, recipe name, recipe description, serves, requirements, ingredients, steps, created by)
-
-User (username, password, first name, last name, email)
-
-![1NF Data Model](assets/readme/1nf_erd.png)
-
-##### 2NF
-
-The second stage separats out attributes that will have a unique key. Giving further structure and defining entities. This again allows for easier quieries, more defined data handling/processing and effeciency. This is not to say that some data from one entity will not be present in another, as this is the nataure of the practical relations between entites in the model. Eg username from the user table will feat in the recipe table as created by. This is necessary to identify each recipes creater for display/search purposes. However the data will not be entered twice as different fields.
-
-Recipe (recipe id, cuisine name(from cuisine), recipe name, recipe description, serves, requirements, ingredients, steps, created by(from user))
-
-User (user id, username, password, first name, last name, email)
-
-Cuisine (cusiine id, cuisine name)
-
-![2NF Data Model](assets/readme/2nf_erd.png)
-
-##### 3NF
-
-The third and final stage brings about the final refined Entity Relationship Diagram (ERD). This is the data model or blue print to be used for desiigning the relational database and has removed duplication and redundancy to create a purpose designed database fit for purpose.
-
-As can be seen each table is defined with a primary key(pk). Users and Cuisines both have a one to many relationship with recipes. This is because one user may have many recipes associated with them, and every recipe must have a cuisine. The shared fields are docked with a foreign key label(fk) and the these fields are shown with a denormalised tag(dk) in their original tables. This depicts their relationship to another table.
-
-The database is split for easy sorting of users, cuisines and recipes. For fast queries and updating it has been optimised to display recipes attached to users and recipes attached to cuisines. These are expected to be the most common queries and so optimisation will speed up searches of an eventual large data set.
+For fast querying each model/database design is separated as to only process queries on modles necessary and reduce response time.
 
 Also visible are the datatype and visual representations of the one to many relationship with the lines between tables.
 
-![3NF Data Model](assets/readme/3nf_erd.png)
+[Data Model/Project ERD](media/readme/erd.png)
 
 ### Wireframes
 
-The following wireframes were constructed within Balsamiq(link this) during the Scope Plane section of the design and planning stage for this project. They represent an early design concept that has largely been kept to through to final product. However do note that they vary slightly from the final design, this is due to practical considerations that arose during the surface plane stage. Some design aspects were altered due to time constraints and practical limitations however I feel the main aim of the project has been realised.
+The following wireframes were constructed within Balsamiq, during the Scope Plane section of the design and planning stage for this project. They represent an early design concept that has largely been kept to through to final product. However do note that they vary slightly from the final design, this is due to practical considerations that arose during the surface plane stage. Some design aspects were altered due to time constraints and practical limitations however I feel the main aim of the project has been realised.
 
-[Homepage Dektop](assets/readme/desktop_homepage-1.png)
+[Homepage Dektop](media/readme/homepagedesktop.png)
 
-[Homepage Tablet](assets/readme/mobile_homepage-1.png)
+[Homepage Mobile](media/readme/homepagemobile.png)
 
-[Homepage Phone](assets/readme/ipad_homepage-1.png)
+[Profile Desktop](media/readme/profiledesktop.png)
 
-[Recipe Dektop](assets/readme/desktop_recipe-1.png)
+[Profile Mobile](media/readme/profilemobile.png)
 
-[Recipe Tablet](assets/readme/tablet_recipe-1.png)
+[Store Desktop](media/readme/storedesktop.png)
 
-[Recipe Phone](assets/readme/mobile_recipe-1.png))
+[Store Mobile](media/readme/storemobile.png)
 
-[Recipe Edit Page Desktop](assets/readme/desktop_recipe_edit-1.png)
+[Checkout Desktop](media/readme/checkoutdesktop.png)
 
-[Recipe Edit Page Tablet](assets/readme/tablet_recipe_edit-1.png)
+[Checkout Mobile](media/readme/checkoutmobile.png)
 
-[Recipe Edit Page Mobile](assets/readme/mobile_recipe_edit-1.png)
-
-[Recipe Edit Page Mobile](assets/readme/tablet_user-1.png)
-
-[Recipe Edit Page Mobile](assets/readme/desktop_user-1.png)
-
-[Recipe Edit Page Mobile](assets/readme/phone_user-1.png)
 
 ### Colours
 
-Colours used were meticulusly selected after research reveal text heavy sites often lend a strong contrast between background and text. Observing other sites such as all recipes it was clear that a clean, soft pallet background enabled more engaging text colours.
+Colour has been used sparingly and with restrictions applied for specific purpose. The thought behind this is to have the only elements with colour on the page be selected/active nav/UI elements and products. By doing this the user is subtly guided into focusing on these areas which in turn will help aid intererst and sales.
 
-As seen colours assigned to the background are a soft yellow/grey. This couple with the bright red nav text and recipe collapsibles provides strong contrast.
-
-Once opened the background becomes white with black text, as staple and strong way to provide information without making the scren feel cluttered.
+This design spec was decided after research into the psychology of sales and publishing/webdesign.
 
 
 ### Fonts
 
-For this project fonts were left as default as they were quite adequate to portray information. The main focus is the information and this is where I wanted the used to be drawn, having clear and concise appearance was more than enough.
+Fonts used for the logo and page headers is 'Ubuntu'. This was choosen as a sharp and stylish font to appeal to a younger audience. Other fonts are defaults as they are fit for purpose.
 
 ### Styling
 
-The general site layout is simple by design, drawing in the users attention with bright colours to areas of naviagtional interest. Important information is left clear and unintruded.
+The general site layout is simple by design, drawing in the users attention with selective colour in areas of naviagtional/sales interest. Important information is left clear and unintruded.
 
-The edit forms are clean and to the point, little styling makes it a simple affair to fill in the required fields and submit. Likewise editing user profile details follows the same suit.
+All forms are clean and to the point, little styling makes it a simple affair to fill in the required fields and submit. Likewise editing user profile details follows the same suit. ALl forms have validation.
 
 
 ## Features
 
 ### Existing Features
 
-- Recipe View
+- Login/Create Account
 <br>
-- Recipe Create
+- Save delivery/profile information
 <br>
-- Recipe Edit
+- Edit profile information
 <br>
-- Recipe Delete
+- Delete profile information
 <br>
 - Fully Responsive
 <br>
-- User Registration
+- View products details and ratings
 <br>
-- User Detail Edit
+- Add products to basket
 <br>
-- Recipe Search Functionality
+- Clear/adjust basket quantity
 <br>
-- Login/Out Functionality
+- Process payments and take orders
 <br>
+- View order history
 <br>
+- Product search functionality
+<br>
+- Product filter functionality
+<br>
+- Login as admin
+<br>
+- Add products as admin
+<br>
+- Edit products as admin
+<br>
+- Delete products as admin
 
 
 ### Navigation Bar
@@ -269,33 +229,39 @@ Nav bar provides links to all pages and works interchangeably on all. It also pr
 
 ### Homepage
 
-![Homepage](assets/readme/recipeview_scr.png)
+![Homepage](media/readme/homepage.png)
 
-Providing the landing page users are welcomes to a clean layout of the most recently added recipes and their associated profiles. These can be expanded right here for viewing. If a user has created these, they can be edited and deleted also.
+Providing the landing page users are welcomes to a clean layout of admin selected packages that are to be pushed for sales the most. Theu can navigate to all areas of the site from here and login/register.
 
-### Recipe View
+### Store
 
-![Recipe View](assets/readme/recipe_scr.png)
+![Store](media/readme/store.png)
 
-Enabling users to get a more in depth look at the recipe this provides all the crucial informtion required.
+Complete list of all products available on the site. Products can be filtered by category, price and rating.
 
-### Registration
+### Checkout
 
-![Contact](assets/readme/register_scr.png)
+![Checkout](media/readme/checkout.png)
 
-Enabling users to get create they own account to create and share recipes this is a straight forward registration form.
+This page is displayed once a user has completed their chekcout. Showing relevant details.
 
-### User Edit Page
+### Profile
 
-![Contact](assets/readme/profile_scr.png)
+![Profile](media/readme/profile.png)
 
-Enabling users to edit thier details at will. This page will check any new entered email or username to see if it has already been registered and will alert the user without releoading the page.
+Displaying users delivery details and order history.
 
-### Recipe Edit Page
+### Payment Details
 
-![Contact](assets/readme/recipeed_scr.png)
+![Payment Details](media/readme/payment.png)
 
-Enabling users to alter their recipes for any mistakes or even an updated version. All fields intially filled can be rewritten entirely here.
+Displaying users delivery details and order history.
+
+### Basket
+
+![Basket](media/readme/basket.png)
+
+Displaying products in the basket.
 
 * Additional Features
 
@@ -313,64 +279,24 @@ Enabling users to alter their recipes for any mistakes or even an updated versio
 ### Bugs List - Check commits for BUG-comparison images
 
 
-Significant bugs were detected during the process of developing this project. During the making of this I kept a small journal noting all bugs that I encounterd and how I solved them. These correlate with the bug fixed committed during development.
+Following Django documentation and inbuilt data modeling practises there were minimal bugs that required attention during the development process. This is inherently a benifit of using a robust framework with a high level of built in functionality.
 
-1.  Login modal reloads page before displaying error messages
+1. Code attempted to render shopping bag items from single quantity variable
 
-Fix: Added js statement to check for error message and open modal if true
-
-
-2. Selecting login removed form elements as required, but they were also lost for register if user selected this after
-
-Fix: Added js to hide elements instead of remove, then enabled these to be shown again 	when selecting register
+- Fixed by changing variable to item_data for iteration
 
 
-3. Hidden input fields with required attribute prevented form submission
+2. Checkout app caused error when processing delivery percentage decimal on single products
 
-Fix: Used jqery to set true and false value to required attribute as necessary
+- added rounding function to solve
 
+3. Add product without image through error as model.py expected img file
 
-4. Setting url_for in script.js causing 404 error on Jinga app routes
+- add if statement to handle no image
 
-Fix: Moved js click events to scripts block of base.html, allowing use of python code
+4. Django local host wouldn’t allow hosting on local machine
 
-
-5. Materialise returning null values causing untaught type errors in browser console
-
-Fix: Replaced flash message with alert to allow page to full reload and avoid errors
-
-
-6. Error modal displaying login description when not required
-
-Fix: Conditional statement added to only show description if no session user present
-
-
-7. Upon editing profile details, text in form doesn’t update
-
-Fix: Updated session user and redeclared user variable after db update, displaying new 	content
-
-8. Upon refresh of login page due to error, wrong elements were displaying
-
-Fix: added conditional js to check error message and apply correct elements
-
-
-9. Profile page could not submit username without profile redirect variables returning none, causing crash
-
-Fix: Redeclare session variable with form input username after conditional logic 				check it for db update
-
-
-10. Font awesome icons not displaying correctly
-
-Fix: Altered version of font awesome to ensure unity across site
-
-
-11. Updated recipes were separated into single character submission
-
-Fix:removed jinga for loops in place for app route variables
-
-1.  Delete modal displayed without prompt for each user upon login
-
-Fix: Added entire javascript function to tag and identify each button/modal and manage display of each upon request
+- added 127.0.0.1 as allowed host
 
 
 ## Technologies Used
@@ -381,7 +307,7 @@ Fix: Added entire javascript function to tag and identify each button/modal and 
 - CSS
 - Javascript
 - jQuery
-- Jinga2
+- Django templating syntax
 - Python3
 
 
@@ -391,9 +317,9 @@ Fix: Added entire javascript function to tag and identify each button/modal and 
 
     - Vs Code was used as the main editor for the project
   <br>
-- Materialize
+- Bootstrap 4
 
-    - Materialize was used to assist in the layout, styling and responsiveness of the site
+    - Bootstrap 4 was used to assist in the layout, styling and responsiveness of the site
   <br>
 - Git
 
@@ -418,26 +344,14 @@ Fix: Added entire javascript function to tag and identify each button/modal and 
 - jQuery
 
     - Provided with Materialize to enable certain responsive elements such as navbar
-  <br>
-- Jsdelivr
-
-    - Provided with Materialize to enable certain responsive elements
-  <br>
-- Flask
-
-    - Micro Framework used to construct web applications
 <br>
--  Jinga2
+-   Amazon Web Services
 
-    - Templating language used alongside flask to allow for easier database interaction and returning documents to users
+    - Platform used to serve static files to Heroku for production
 <br>
--   MongoDB
+-   Stripe Payment
 
-    - Non-relational database used to store and retrieve data such as recipe fields and user login credentials
-<br>
-- PyMongo
-
-    - Contains tools necessary for python to interact with MongoDB
+    - Platform API used to process payments securely
 <br>
 - Heroku
 
@@ -447,179 +361,149 @@ Fix: Added entire javascript function to tag and identify each button/modal and 
 
     - Used to visualise database and relationships
 <br>
+- Django
+
+    - Web framework used to build site data model framework
+<br>
+- Django Allauth
+
+    - Library enabling creation of personal user accounts
+<br>
+- Django-environ
+
+    - Enabled secure use of environment variables during development only
+<br>
+- postgreSQL
+
+    - Database used within Heroku to host site data and return queries
+<br>
+- Tinyjpg
+    - Used to compress image files to web appropriate file sizes
+<br>
+- pygraphviz
+    - Used to generate Entity Relationship Diagram
+
+
 
 ## Testing
 
 ### Validator Testing
 
-Using Jinga2 within .HTML files has proved to throw out the W3 validation, however instances of using Jinga2 (and by extension Python) are the only errors shown.
+Using Djangos template language within .HTML files has proved to throw out the W3 validation, however instances of using this (and by extension Python) are the only errors shown.
+
+CSS, JS and Python files were all collated for bulk validation.
 
 CSS Validation
-![CSS Validation](assets/readme/css_validation.png)
+![CSS Validation](media/readme/w3cvalidation.png)
 
 Javascript Validation
-![Javascript Validation](assets/readme/js_validation.png)
+![Javascript Validation](media/readme/jshint.png)
 
 Python Validation
-![Python Validation](assets/readme/python_validation.png)
+![Python Validation](media/readme/flake8.png)
 
 
 ### Testing User Stories from User Experience (UX) Section
 
 ### User Goals
 
-1. Intuitively use and navigate site
-- Site buttons and navigations are clear
-  <br>
-2. Easily discover new recipes
-- Landing page provides search bar and recently added
+- Intuitively use and navigate site
+- Discover quickly purpose of the site
+- Discover quickly value/use of site to me
+- Understand product and what they do for me
+- Understand how protein and nutrition can help me
+- Feel theres something to suit my needs now and in future
+- Choose products/content I receive/pay for to suit my needs
+- Easily signup and enter my information
+- Save info for faster checkout
+- Easily browse store products
+- Easily purchase store products
+- Intuitive shopping experience
+- Choose annual fitness plans
 <br>
-3. Simple to create account
-- Account creation is handled on landing page in one step
-<br>
-4. Simple to login/out
-- Both are available within nav bar when appropriate
-<br>
-5. Simplistic way to add own recipes to site
-- Recipe addition form is simple and intuative to fill in
-<br>
-6. Easy way to update own recipes
-- Recipe updating is again intuitive and displays previous input information
-<br>
-7. Easy to remove own recipes
-- A clear delete button is provided for users. There's also a dialogue box to check this is the users intention
-<br>
-8. Clean user interface to follow instructions whilst cooking
-- Recipe layout provides strong contrast between text and background, there's also plenty of whitespace to reduce clutter
-  <br>
-  <br>
-
 
 ### Developer Goals
 
-1. Simple to use
-- Layout has been designed to intuitive
-  <br>
-2. Fluid user experience
-- Experience is smooth and doesn't require loading many pages for example to log in or out
-  <br>
-3. Low stress usage
-- The clear layout and labled buttons provide instruction on function
+- Simple to use UI
+- Fluid user experience
+- Low stress usage
+- Aid users in reaching their fitness goals
+- High compatibility/responsivness for user ease of access
+- High user engagement
+High product sales
+High annual fittness sales
 <br>
-4. Provide value to user
-- Site enables creating and sharing of recipes as deisigned
-  <br>
-5. High accessibility for the impaired
-- All inputs are either labled or contain aria-label attributes
-<br>
-6. High compatibility for user ease of access
-- Site is fully responsible and is compatible with a number of wideley used browsers
-<br>
-7. High user return rate
-- Site functions as designed, giving highest chance of user returun
-<br>
-8. High user contribution rate
-- Giving users the ability to create their own accounts and recipes provides highest chance of interaction
-<br>
-9. Generate monetary value by increasing sales of own brand appliances
-- Suggestions for each reipe with links to cookware site provide way to convert users to customers
-<br>
-<br>
-
 
 ### User Stories
 
-####First time User Goals
+* First time User Goals
 
-As a first time user, I want to easily ascertain the main purpose of the site and its value to me
-
-- Upon arrival on the landing page the site title displays cleart the name of the site and small descriptions provides clarity
-
-<br>
-
-As a first time user, I want to easily interact with the application and its controls, visibly receiving feedback
-
-- Buttons and navigation all provide some form of visual feedback, either through css or a dialogue box message
-
-<br>
-
-As a first time user, I wish to be presented with new and exciting recipes to browse
-
-- Landing page displays all recently uploaded recipes and provides a search bar to further discover
-
-<br>
-
-As a first time user, I wish to quickly understand the variation and general contents of the site
-
-- Content is provided in strips of data across the page, this can be quickly expande to reveal more data on each recipe. Throgh this the user can expand their knowledge of what is available
-
-
+  - As a first time user, I want to easily ascertain the main purpose of the site and its value to me
+    - From the homepage the user can clearly see the logo/name of the site and is immediatly shown a nav bar/products that are all fitness related
   <br>
+  - As a first time user, I want to easily interact with the sites navigation and controls, visibly receiving feedback
+    - Nav buttons are interactive and provide hover and click feedback
   <br>
-####Returning User Goals
-
-As a returning user I wish to explore recipes further and search more specifically
-
-- Search functionality is available on all pages within the nav bar at the top of the screen
-
-<br>
-
-As a returning user I wish to browse recipes per my search terms to find what I am looking for
-
-- This again is provided by the search bar allowing for specific searches of recipe title and description
-
-<br>
-
-As returning user I want to know if there is a way to contribute to the catalog of recipes
-
-- Clicking register will reveal dialogue explaining that having and account enables the user to contribute thier own recipes
-
+  - As a first time user, I wish to be presented with new and exciting products to browse
+    - The homepage is updates by admin and is used to showcase the latest products that have been choosen for a stronger sales push
   <br>
+  - As a first time user, I want to understand how products/plans can help me in my goals
+    - Each product contains a description and information on what it is/can provide
   <br>
-####Frequent User Goals
-
-As a frequent user, I want to be able to contribute my own recipes to the site
-
-- By registering an acount users can contribute their own recipes
-
+  - As a first time user, I want to understand how nutrition can aid me
+    -  Each product contains a description and information on what it is/can provide
 <br>
+  - As a first time user, I wish to easily sign up and enter my information
+    - From any page on the site a user can signup and create an account entering their information
+  <br>
 
-As a frequent user I want to be able to edit my recipes as I improve and better them
+* Returning User Goals
+  <br>
+  - As a returning user I wish to choose products/content I pay for that suit my needs
+    - Products can be filtered via a number of categories to help users choose what is applicable to them. They can then add them to the basket and securely checkout
+  <br>
+  - As a returning user I want to easily browse the store and purchase products
+    - Browsing the store is a very simple navigational task aided by a simplistic UI. Products can be added to the bag and securely checked out in minutes using the Stripe API
+  <br>
+  - As returning user I want to know if a longterm solution rather than individual pruchases is available
+    - Annual packages can be purchased that provide a high number of other products that reduce the need to continually by smaller quantities
+  <br>
 
-- The ability to edit their own recipes is provided to users
+* Frequent User Goals
+  <br>
+  - As a frequent user, I want to be able to order more swiftly from the site, not entering all details each time
+    - Users prefered delivery addresses can be stored and entered automatically, reducing repetiton of data entry
+  <br>
+  - As a frequent user I want to be able to edit my account details easily
+  - Details can be updated and deleted easily by simply re-filling out the form data or clearing it and pressing update
+  <br>
 
+* Developer Goals
+  <br>
+   - As a developer, I want users to find the UI intuitive and easy to use
+     - The UI can been designed with simplicity in mind to make it intuitive to use. This involves user feedback from buttons and having only necessary calls to action on the page
+  <br>
+   - As a developer, I want users to find a fluid experience from signup to purchase
+      - Browsing the store, adding products to the basket and then checking out with products can be done in minutes and requires a minimal amount of site navigation and clicking through pages
+  <br>
+   - As a developer, I want users to feel little if at all stress in navigating the site
+     - The simplistic UI couples with a logical navigation tree/few clicks to navigate pages/checkout make for a stress free experience
+  <br>
+   - As a developer, I want to aid users in achieving their health and fitness goals
+      - All products on the site provide either direct nutrition for specific goals, exercises for those goals or equipment to enable those goals
+ <br>
+  - As a developer, I want the site to have high accessibility and responsiveness
+     - The site is fully responsive from desktop to mobile and provides a provides alt tags, title tags and aria labels where necessary to ensure accessability
 <br>
-<br>
-#### Developer Goals
-
-As a developer, I want new users to discover the site
-
-- Using semantic markup and correct HTML5 practices for SEO the site will have the best opportunity to perform well on seach engines
-
-<br>
-As a developer, I want new users to engage and take value in the site
-
-- Providing a clear layout, easy use and ensuring the site is free to use, this will provide incredible value to users
-
-<br>
-
-As a developer, I want users to contribute new content to the site
-
-- Having the landing page refresh with the latest user generated content, this will encourage more users to wish to contribute
-
-<br>
-As a developer, I want users to take notice of suggested own brand appliances
-
-- Attached to each recipe are suggested links, using data from the required form field "requirements". These user relevant links to the cookware site will drive sales
-<br>
-<br>
+  - As a developer, I want the site to have a high number of sales
+    - By providing an engaging and easy to use site populated with select useful products it can be hoped that this will generate a high number of sales
+  <br>
 
 ## Further Testing
 
 ### Black Box
 
 This testng relates to final stage testing where most bugs have been removed. Bugs that remain are present due to time constraints. See design stage for bug reports and fixes.
-Images for each are numbered and provided bellow.
 
 Test No | Test Feature | Expected Result | Actual | Pass/Fail
 ------------ | ------------- | ------------ | ------------ | -------------
@@ -627,41 +511,23 @@ Test No | Test Feature | Expected Result | Actual | Pass/Fail
 2 | Check Navbar styling | Navbar styled correctly  | | PASS
 3 | Homepage buttons | buttons in place | | PASS
 4 | Font, size and style | Styled correctly | | PASS
-5 | Delete Button | Opens modal/Deletes recipe | | PASS
-6 | Edit Button | Loads recipe edit page | | PASS
-7 | Recipe Form Validation | Edit/Create recipe inputs validate | | PASS
-8 | Login/Register Form Validation | Login/Register inputs validate | | PASS
-9 | User profiles link | Recipes of logged in user provide link to profile | | PASS
+5 | Signin button | Opens correct page | | PASS
+6 | Register button | Loads correct page | | PASS
+7 | Signin/Register form validation | Prompts user when invalid input provided | | PASS
+8 | Adding items to basket | Items added to bakset | | PASS
+9 | User profiles link | Leads to user profile | | PASS
 10 | Search Bar | Search enables searching of sites recipes | | PASS
-11 | Edit User Details | User can edit own details on profile | | PASS
-12 | Edit User Details | Update fails if username exists | | PASS
-13 | Edit User Details | Update fails if emails exists | | PASS
-14 | Recipe Delete Modal | Recipe delete modal loads when required | Modal loads for each recipe on landing page load | PASS
-15 | Recipe bar expands | Recipe bar expands, displaying recipe | | PASS
-16 | Cuisine Display | Correct cuisine displayed on recipe | | PASS
-17 | Cusine Display | Correct cuisine displayed on recipe edit page | Default recipe is displayed| FAIL
-18 | Recipe Update | All fields update correctly | | PASS
+11 | Update User Details | User can update own details on profile | | PASS
+12 | Delete user details | Updating empty fields clears user data | | PASS
+13 | Edit basket | Items deleted/quantity adjusted | | PASS
+14 | Feedback alert boxes | Feedback provided for login/logout, sighnup, basket update, successful/unsuccsessful checkout | | PASS
+15 | Product details page | Clicking product opens details page | | PASS
+16 | Filtering products via metrics eg category, rating, price | All metrics successfully filter products | | PASS
+17 | Logging in as admin provide options to delete, add, update products | Admin login displays correct options | | PASS
+18 | Successful product update | Product updates | | PASS
 19 | Site navbar links | Links function as expected | | PASS
-20 | Recipe Suggestions | Reciepe suggestions appear and links function | | PASS
-
-
-### Black Box Testing Images
-
-[1-4, 9, 19](assets/readme/recipeview_scr.png)
-[5](assets/readme/delete_modal.png)
-[6-7](assets/readme/formval_scr.png)
-[8](assets/readme/loginval_scr.png)
-[10](assets/readme/search_val.png)
-[11](assets/readme/profileedit_scr.png)
-[12-13](assets/readme/editfail_scr.png)
-[14](assets/readme/delete_modal.png)
-[15](assets/readme/recipe_scr.png)
-[16](assets/readme/editfail_scr.png)
-[17](assets/readme/recipeed_scr.png)
-[18](assets/readme/recipe_update.png)
-[20](assets/readme/suggestions.png)
-
-
+20 | Successful product deletion | Product deleted | | PASS
+21 | Successful product creation | Product added | | PASS
 
 
 ### Browsers
@@ -670,17 +536,19 @@ Test No | Test Feature | Expected Result | Actual | Pass/Fail
 ### Lighthouse
  - Testing using lighthouse took place in chrome with these results
 
-[Lighthouse Results](assets/readme/lighthouse.png)
+![Lighthouse Results](media/readme/fitness4everlighthouse.png)
+
+Performance here is less than ideal. After some investigation this metric drop is caused by slow load times of images from Amaon Web Services. Due to the use of a free account web traffic has speed limitations. Tiny JPEG was used to decrease file size of static image files to slightly increase the score to 69 from 56, as shown in the image above.
 
 ### Devices
  - The site was tested on a variety of devices including a MacBook Pro, Dell Desktop, iPhone 11, iPad and Samsung Galaxy S20.
 
 ### Friends/Family Users
- - Family members and friends took part in testing using the site and informed of any bugs encountered
+ - Family members and friends took part in testing using the site and informed of any bugs encountered.
 
 ### Known Bugs
 
- - Cuisine doesn't display correctly while editing an existsing recipe. It does however submit correctly to the db and displays on a searched recipe and on recipes on the landing page
+ - All known bugs and issues have been resolved.
   <br>
 
 ## Deployment
@@ -712,100 +580,233 @@ Forking the Github repository makes a copy of the original repository on our Git
 5. You have now opened a new workspace within gitpod
 6. The repository is cloned to your Github
 7. Take note of requirements.txt for requirements
+8. No env variables will be present, please see settings.py to find required variables and set these to your own setup/needs. You can set env variables within gitpods settings or CLI
 
-### Setting Up Database MongoDB
+### Setting Up Django
 
 Project must be cloned to desired location before completing this step
 
-1. Login to MongoDB and create a cluster
-2. Create a database named recipe_road
-3. Within this create three collections names 'cuisines', 'recipes' and 'users'. *This is important as it will sync your database with the python files and code within the project.
-4. Click connect and follow instructions to allow user access as desired and collect MongoDB URI
+1. Once the project is cloned into the desired workspace, you will need all project requirements
+2. Key to this is Django, while other requirements/libraries may be substituted, this cannot.
+3. Install all requirements from requirements.txt and you Django should install during this process
 
 ###Deploy To Heroku
 1. Login to Heroku and create new app
 2. Go to deploy and connect github account to Heroku
 3. Go to access and add collaborator
-4. Go to settings and reveal config vars. Here specify your desired IP and PORT, as well as asign a secret key
-5. Within your project create an eny.py file, add this to gitignore
-6. Within the env.py file import os and set default IP, PORT, MONGODB_NAME, & MONGO_URI as well as secret key
-7. Once this done return to Heroku and access deploy
-8. Ensure correct github repository branch is selected and select deploy branch
+4. Go to settings and reveal config vars. Here specify required variables which can be found in setting.py. This will include Amazon Web Services/Stripe keys details bellow
+5. Once all env's are within config vars, you can deploy the project
 
 ## Security
 
-This app uses werkzeug hashing for login security and also requires the use of an env.py file. This stores sensitive information about the site such as secret keys for DB's and access to deployment. This should never be uploaded to a public cloud or made public.
+This app uses AllAuth to manage login/signup and has it's own built in security measures to ensure safety in this process. Stripe API has been used to process payments over a secure https connection to their servers where data is processed securely and then deleted. Webhooks have been employed to prevent processing of payments if an order doesn't process properly.
 
 ##Assets List
 
-ID | Filename.type | Description | Size | Location |
------------- | ------------- | ------------ | ------------ | ------------- | ------------
-1 | base.html | Base Template | 12KB | Templates
-2 | profile.html | Profile Page | 16KB | Templates
-3 | add_recipe.html | Add Recipe Page | 11KB | Templates
-4 | edit_recipe.html | Edit Recipe Page | 11KB | Templates
-5 | recipes.html | Landing Page | 14KB | Templates
-6 | app.py | Main Python App | 18KB | Root
-7 | Procfile | Procfile | 4KB | Root
-8 | readme.md | Readme | 28KB | Root
-9 | blue.png | Avatar Image | 4KB | Assets/Images & Assets/Static/IMG
-10| style.css | CSS File | 6KB | Assets/Static/CSS
-11| script.js | Js File | 7KB | Assets/Static/JS
-12| requirements.txt | Requirements | 4KB | Root
+This is a git generated list of all files within the repository. As the project is large in size and contains hundreds of different files I opted for an automated solution. This is an effort to be time efficient as manually creating this list would have taken an enourmous number of hours/days.
+
+<details><summary>Open to view Complete Asset List</summary>
+
+|Asset Name|
+|---|---|---|---|
+|.DS_Store|
+|:----|
+|.gitignore|
+|.gitpod.dockerfile|
+|.gitpod.yml|
+|.vscode/MAINTAINERS.md|
+|.vscode/arctictern.py|
+|.vscode/client.cnf|
+|.vscode/font_fix.py|
+|.vscode/heroku_config.sh|
+|.vscode/init_tasks.sh|
+|.vscode/launch.json|
+|.vscode/make_url.py|
+|.vscode/mysql.cnf|
+|.vscode/rmdep.sh|
+|.vscode/settings.json|
+|.vscode/start_mysql.sh|
+|.vscode/upgrades.json|
+|.vscode/uptime.sh|
+|.vscode/version.txt|
+|Procfile|
+|bag/__init__.py|
+|bag/admin.py|
+|bag/apps.py|
+|bag/contexts.py|
+|bag/migrations/__init__.py|
+|bag/models.py|
+|bag/templates/bag/bag.html|
+|bag/templatetags/__init__.py|
+|bag/templatetags/bag_tools.py|
+|bag/tests.py|
+|bag/urls.py|
+|bag/views.py|
+|checkout/__init__.py|
+|checkout/admin.py|
+|checkout/apps.py|
+|checkout/forms.py|
+|checkout/migrations/0001_initial.py|
+|checkout/migrations/0002_auto_20220618_1000.py|
+|checkout/migrations/0003_alter_order_country.py|
+|checkout/migrations/0004_order_user_profile.py|
+|checkout/migrations/__init__.py|
+|checkout/models.py|
+|checkout/signals.py|
+|checkout/static/checkout/css/checkout.css|
+|checkout/static/checkout/js/stripe_elements.js|
+|checkout/templates/checkout/checkout.html|
+|checkout/templates/checkout/checkout_success.html|
+|checkout/templates/checkout/confirmation_emails/confirmation_email_body.txt|
+|checkout/templates/checkout/confirmation_emails/confirmation_email_subject.txt|
+|checkout/tests.py|
+|checkout/urls.py|
+|checkout/views.py|
+|checkout/webhook_handler.py|
+|checkout/webhooks.py|
+|custom_storages.py|
+|fitness4ever/__init__.py|
+|fitness4ever/asgi.py|
+|fitness4ever/settings.py|
+|fitness4ever/urls.py|
+|fitness4ever/wsgi.py|
+|home/__init__.py|
+|home/admin.py|
+|home/apps.py|
+|home/migrations/0001_initial.py|
+|home/migrations/__init__.py|
+|home/models.py|
+|home/templates/home/index.html|
+|home/tests.py|
+|home/urls.py|
+|home/views.py|
+|manage.py|
+|media/WhatsApp_Image_2022-06-12_at_12.28.20_PM.jpeg|
+|media/WhatsApp_Image_2022-06-12_at_12.28.20_PM_AVRSNwb.jpeg|
+|media/bulk_pro.jpg|
+|media/exercise_shoes.jpg|
+|media/lean_pro.jpg|
+|media/mens_shorts.jpg|
+|media/noimage.jpg|
+|media/readme/fitness4evermockup.png|
+|media/ul_womens_top.jpg|
+|media/weight_pro.jpg|
+|media/womens_bra.jpg|
+|media/womens_shorts.jpeg|
+|profiles/__init__.py|
+|profiles/admin.py|
+|profiles/apps.py|
+|profiles/forms.py|
+|profiles/migrations/0001_initial.py|
+|profiles/migrations/__init__.py|
+|profiles/models.py|
+|profiles/static/profiles/css/profile.css|
+|profiles/static/profiles/js/countryfield.js|
+|profiles/templates/profiles/profile.html|
+|profiles/tests.py|
+|profiles/urls.py|
+|profiles/views.py|
+|readme.md|
+|requirements.txt|
+|static/css/base.css|
+|store/__init__.py|
+|store/admin.py|
+|store/apps.py|
+|store/fixtures/categories.json|
+|store/fixtures/store.json|
+|store/forms.py|
+|store/migrations/0001_initial.py|
+|store/migrations/0002_rename_product_store.py|
+|store/migrations/0003_alter_store_price.py|
+|store/migrations/0004_alter_category_options.py|
+|store/migrations/0005_store_has_sizes.py|
+|store/migrations/__init__.py|
+|store/models.py|
+|store/templates/store/add_products.html|
+|store/templates/store/custom_widget_templates/custom_clearable_file_input.html|
+|store/templates/store/edit_product.html|
+|store/templates/store/includes/quantity_script.html|
+|store/templates/store/item_detail.html|
+|store/templates/store/store.html|
+|store/tests.py|
+|store/urls.py|
+|store/views.py|
+|store/widgets.py|
+|templates/.DS_Store|
+|templates/allauth/account/account_inactive.html|
+|templates/allauth/account/base.html|
+|templates/allauth/account/email.html|
+|templates/allauth/account/email/email_confirmation_message.txt|
+|templates/allauth/account/email/email_confirmation_signup_message.txt|
+|templates/allauth/account/email/email_confirmation_signup_subject.txt|
+|templates/allauth/account/email/email_confirmation_subject.txt|
+|templates/allauth/account/email/password_reset_key_message.txt|
+|templates/allauth/account/email/password_reset_key_subject.txt|
+|templates/allauth/account/email_confirm.html|
+|templates/allauth/account/login.html|
+|templates/allauth/account/logout.html|
+|templates/allauth/account/messages/cannot_delete_primary_email.txt|
+|templates/allauth/account/messages/email_confirmation_sent.txt|
+|templates/allauth/account/messages/email_confirmed.txt|
+|templates/allauth/account/messages/email_deleted.txt|
+|templates/allauth/account/messages/logged_in.txt|
+|templates/allauth/account/messages/logged_out.txt|
+|templates/allauth/account/messages/password_changed.txt|
+|templates/allauth/account/messages/password_set.txt|
+|templates/allauth/account/messages/primary_email_set.txt|
+|templates/allauth/account/messages/unverified_primary_email.txt|
+|templates/allauth/account/password_change.html|
+|templates/allauth/account/password_reset.html|
+|templates/allauth/account/password_reset_done.html|
+|templates/allauth/account/password_reset_from_key.html|
+|templates/allauth/account/password_reset_from_key_done.html|
+|templates/allauth/account/password_set.html|
+|templates/allauth/account/signup.html|
+|templates/allauth/account/signup_closed.html|
+|templates/allauth/account/snippets/already_logged_in.html|
+|templates/allauth/account/verification_sent.html|
+|templates/allauth/account/verified_email_required.html|
+|templates/allauth/base.html|
+|templates/allauth/socialaccount/authentication_error.html|
+|templates/allauth/socialaccount/base.html|
+|templates/allauth/socialaccount/connections.html|
+|templates/allauth/socialaccount/login_cancelled.html|
+|templates/allauth/socialaccount/messages/account_connected.txt|
+|templates/allauth/socialaccount/messages/account_connected_other.txt|
+|templates/allauth/socialaccount/messages/account_connected_updated.txt|
+|templates/allauth/socialaccount/messages/account_disconnected.txt|
+|templates/allauth/socialaccount/signup.html|
+|templates/allauth/socialaccount/snippets/login_extra.html|
+|templates/allauth/socialaccount/snippets/provider_list.html|
+|templates/base.html|
+|templates/includes/main-nav.html|
+|templates/includes/mobile-top-header.html|
+|templates/includes/toasts/toast_error.html|
+|templates/includes/toasts/toast_info.html|
+|templates/includes/toasts/toast_success.html|
+|templates/includes/toasts/toast_warning.html|
+
+</details>
 
 
 ## Credits
 
 ### Code
-https://webdesign.tutsplus.com/tutorials/html5-form-validation-with-the-pattern-attribute--cms-25145
-Character validation using “pattern” attribute
+https://docs.djangoproject.com/en/4.1/
+Used for guidance on Django framework
 
-https://stackoverflow.com/questions/31218320/bootstrap-modal-for-flask-login-form-in-the-base-html-without-sending-the-form-i
-Linking modal to flask app route
-
-https://stackoverflow.com/questions/21282049/html5-pattern-allow-specific-special-characters/23532013
-input validation for special characters
-
-https://stackoverflow.com/questions/40430576/how-i-can-open-a-materialize-modal-when-a-window-is-ready
-Open model function
-
-https://medium.com/@crawftv/javascript-jinja-flask-b0ebfdb406b3
-How to pass in Javascript to Flask Applications
-
-https://www.tutorialspoint.com/How-can-I-change-the-text-color-with-jQuery
-Change text colour with jQuery
-
-https://stackoverflow.com/questions/5451600/jquery-to-change-form-action
-How to change to attributes with jQuery
-
-https://api.jquery.com/removeclass/
-remove and add classes in single function
-
-https://www.w3schools.com/jquery/jquery_hide_show.asp
-Hide/Show elements
-
-https://docs.mongodb.com/manual/tutorial/project-fields-from-query-results/
-How to return select fields from MongoDB query
-
-https://stackoverflow.com/questions/13701923/disable-editing-default-value-of-text-input
-Set HTML input to read only
-
-https://webaim.org/resources/contrastchecker/
-used to choose and check contrast of styling colours
-
-Code Institute Materialise Bug Fix
-Fixes issue where by form select validation doesn’t work correctly
-
-https://stackoverflow.com/questions/1465249/get-lengths-of-a-list-in-a-jinja2-template
-Using jinga to get length of incoming data
+https://stripe.com/docs/api
+Used for guidance on Stripe API
 
 ### Content
-https://www.bbc.co.uk/food
-Recipes
+All text content was written by myself
 
 ### Media
-https://www.figma.com/community/file/1000695889468597984
-User Avatars
+https://www.pexels.com
+Royalty free stock images
+
+kaggle.com
+Royalty free stock images
 
 ## Ackhnowledgements
  - Patrick Justus
